@@ -37,7 +37,7 @@ it('checks if the hunger has increased by 5', () => {
   expect(pet.hunger).toEqual(5);
 });
 
-it('gives my pet a fitness level of 10', () => {
+it('gives my pet a fitness level of 4', () => {
   const pet = new Pet('Fido');
   expect(pet.fitness).toEqual(4);
 });
@@ -49,7 +49,7 @@ it('checks if the fitness has decreased by 3', () => {
 
   expect(pet.fitness).toEqual(1);
 });
-describe('fitness gone up by 4', () => {
+ 
 it('checks the fitness has gone up by 4', () => {
   const pet = new Pet('Fido');
   const startingFitness = pet.fitness;
@@ -58,7 +58,7 @@ it('checks the fitness has gone up by 4', () => {
 
   expect(pet.fitness).toBe(startingFitness + 4);
 });
-});
+
 describe('fitness should never go above 10', () => {
   it('checks fitness hasnt surpassed 10', () => {
     const pet = new Pet('Fido');
@@ -69,3 +69,18 @@ describe('fitness should never go above 10', () => {
   });
 });
 
+describe('increases hunger', () => {
+  it('checks that hunger has decreased', () => {
+    const pet = new Pet('Fido');
+    pet.hunger = 10
+    pet.feed();
+    expect(pet.hunger).toEqual(7);  
+  });
+  it('checks hunger hasnt gone below 0', () => {
+    const pet = new Pet('Fido');
+    for (let feed = 0; feed <4; feed++)
+    pet.feed();
+    expect(pet.hunger).toEqual(3)
+  });
+ });
+ 
